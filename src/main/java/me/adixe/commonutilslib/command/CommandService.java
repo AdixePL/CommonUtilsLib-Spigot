@@ -7,11 +7,18 @@ import java.util.*;
 
 public class CommandService extends BaseCommandExecutor {
     private final Map<BaseCommandExecutor, List<String>> subcommands;
+    private final boolean requireSubcommand;
 
-    public CommandService(String name, String permission, SectionContainer settingsContainer) {
+    public CommandService(String name, String permission,
+                          SectionContainer settingsContainer, boolean requireSubcommand) {
         super(name, permission, settingsContainer);
 
-        this.subcommands = new HashMap<>();
+        this.subcommands = new LinkedHashMap<>();
+        this.requireSubcommand = requireSubcommand;
+    }
+
+    public CommandService(String name, String permission, SectionContainer settingsContainer) {
+        this(name, permission, settingsContainer, true);
     }
 
     public void register(BaseCommandExecutor executor, String... triggers) {
@@ -21,23 +28,29 @@ public class CommandService extends BaseCommandExecutor {
     @Override
     protected void perform(CommandSender sender, String[] args) throws CommandException {
         if (args.length == 0) {
-            throw new CommandException("missing-subcommand");
-        }
+            BaseCommandExecutor subcommand = subcommands.keySet().iterator().next();
 
-        String trigger = args[0];
-
-        for (Map.Entry<BaseCommandExecutor, List<String>> entry : subcommands.entrySet()) {
-            BaseCommandExecutor subcommand = entry.getKey();
-
-            if (subcommand.hasPermission(sender) && entry.getValue().contains(trigger)) {
-                subcommand.execute(sender, args.length > 1 ?
-                        Arrays.copyOfRange(args, 1, args.length) : new String[0]);
-
-                return;
+            if (!requireSubcommand && subcommand.hasPermission(sender)) {
+                subcommand.execute(sender, new String[0]);
+            } else {
+                throw new CommandException("missing-subcommand");
             }
-        }
+        } else {
+            String trigger = args[0];
 
-        throw new CommandException("unknown-subcommand", Map.of("trigger", trigger));
+            for (Map.Entry<BaseCommandExecutor, List<String>> entry : subcommands.entrySet()) {
+                BaseCommandExecutor subcommand = entry.getKey();
+
+                if (subcommand.hasPermission(sender) && entry.getValue().contains(trigger)) {
+                    subcommand.execute(sender, args.length > 1 ?
+                            Arrays.copyOfRange(args, 1, args.length) : new String[0]);
+
+                    return;
+                }
+            }
+
+            throw new CommandException("unknown-subcommand", Map.of("trigger", trigger));
+        }
     }
 
     @Override

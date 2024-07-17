@@ -1,7 +1,7 @@
 package me.adixe.commonutilslib.parser.provider.itemstack;
 
 import me.adixe.commonutilslib.parser.provider.Parser;
-import me.adixe.commonutilslib.parser.provider.itemstack.loader.ItemLoader;
+import me.adixe.commonutilslib.parser.provider.itemstack.loader.*;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -54,5 +54,16 @@ public class ItemStackParser extends Parser<ItemStack> {
 
     public void registerMetaLoader(ItemLoader<ItemMeta> loader) {
         metaLoaders.add(loader);
+    }
+
+    public void registerDefaultLoaders() {
+        registerItemLoader(new EnchantmentsLoader());
+        registerMetaLoader(new DisplayNameLoader());
+        registerMetaLoader(new LoreLoader());
+        registerMetaLoader(new UnbreakableLoader());
+        registerMetaLoader(new FlagsLoader());
+        registerMetaLoader(new ModifiersLoader());
+        registerMetaLoader(new ArmorColorLoader());
+        registerMetaLoader(new PotionLoader());
     }
 }

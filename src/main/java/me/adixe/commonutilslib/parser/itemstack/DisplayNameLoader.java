@@ -1,4 +1,4 @@
-package me.adixe.commonutilslib.parser.provider.itemstack.loader;
+package me.adixe.commonutilslib.parser.itemstack;
 
 import me.adixe.commonutilslib.util.MessageUtil;
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
@@ -6,7 +6,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.simpleyaml.configuration.ConfigurationSection;
 
-public class DisplayNameLoader extends ItemLoader<ItemMeta> {
+public class DisplayNameLoader extends Loader<ItemMeta> {
     public DisplayNameLoader() {
         super("display-name");
     }

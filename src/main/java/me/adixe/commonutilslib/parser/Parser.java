@@ -1,4 +1,4 @@
-package me.adixe.commonutilslib.parser.provider;
+package me.adixe.commonutilslib.parser;
 
 import org.simpleyaml.configuration.ConfigurationSection;
 

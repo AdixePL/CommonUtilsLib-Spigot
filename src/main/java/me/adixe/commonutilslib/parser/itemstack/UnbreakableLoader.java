@@ -1,9 +1,9 @@
-package me.adixe.commonutilslib.parser.provider.itemstack.loader;
+package me.adixe.commonutilslib.parser.itemstack;
 
 import org.bukkit.inventory.meta.ItemMeta;
 import org.simpleyaml.configuration.ConfigurationSection;
 
-public class UnbreakableLoader extends ItemLoader<ItemMeta> {
+public class UnbreakableLoader extends Loader<ItemMeta> {
     public UnbreakableLoader() {
         super("unbreakable");
     }

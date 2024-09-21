@@ -1,7 +1,7 @@
 package me.adixe.commonutilslib.command;
 
 import me.adixe.commonutilslib.command.arg.CommandArg;
-import me.adixe.commonutilslib.configuration.SectionContainer;
+import me.adixe.commonutilslib.configuration.SectionHolder;
 import org.bukkit.command.CommandSender;
 
 import java.util.HashMap;
@@ -12,9 +12,9 @@ public abstract class CommandExecutor extends BaseCommandExecutor {
     private final List<CommandArg> args;
     private final int requiredArgs;
 
-    public CommandExecutor(String name, String permission, SectionContainer settingsContainer,
+    public CommandExecutor(String name, String permission, SectionHolder messagesHolder,
                            List<CommandArg> args, int requiredArgs) {
-        super(name, permission, settingsContainer);
+        super(name, permission, messagesHolder);
 
         this.args = args;
         this.requiredArgs = requiredArgs;

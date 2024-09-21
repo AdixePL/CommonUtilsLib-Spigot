@@ -1,11 +1,11 @@
-package me.adixe.commonutilslib.parser.provider.itemstack.loader;
+package me.adixe.commonutilslib.parser.itemstack;
 
 import org.simpleyaml.configuration.ConfigurationSection;
 
-public abstract class ItemLoader<T> {
+public abstract class Loader<T> {
     protected final String path;
 
-    public ItemLoader(String path) {
+    public Loader(String path) {
         this.path = path;
     }
 

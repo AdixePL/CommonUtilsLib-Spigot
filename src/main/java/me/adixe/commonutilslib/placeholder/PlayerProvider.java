@@ -1,4 +1,4 @@
-package me.adixe.commonutilslib.placeholder.provider;
+package me.adixe.commonutilslib.placeholder;
 
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PlayerProvider extends PlaceholderProvider<Player> {
+public class PlayerProvider extends Provider<Player> {
     public PlayerProvider(String defaultPrefix) {
         super(Player.class, defaultPrefix);
     }

@@ -1,7 +1,5 @@
 package me.adixe.commonutilslib.parser;
 
-import me.adixe.commonutilslib.parser.provider.Parser;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package me.adixe.commonutilslib.placeholder.provider;
+package me.adixe.commonutilslib.placeholder;
 
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.format.Style;
@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemStackProvider extends PlaceholderProvider<ItemStack> {
+public class ItemStackProvider extends Provider<ItemStack> {
     public ItemStackProvider(String defaultPrefix) {
         super(ItemStack.class, defaultPrefix);
     }

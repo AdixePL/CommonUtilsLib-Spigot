@@ -1,11 +1,11 @@
-package me.adixe.commonutilslib.parser.provider.itemstack.loader;
+package me.adixe.commonutilslib.parser.itemstack;
 
 import org.bukkit.Color;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.simpleyaml.configuration.ConfigurationSection;
 
-public class ArmorColorLoader extends ItemLoader<ItemMeta> {
+public class ArmorColorLoader extends Loader<ItemMeta> {
     public ArmorColorLoader() {
         super("armor-color");
     }

@@ -1,7 +1,6 @@
-package me.adixe.commonutilslib.parser.provider.itemstack;
+package me.adixe.commonutilslib.parser.itemstack;
 
-import me.adixe.commonutilslib.parser.provider.Parser;
-import me.adixe.commonutilslib.parser.provider.itemstack.loader.*;
+import me.adixe.commonutilslib.parser.Parser;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -11,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemStackParser extends Parser<ItemStack> {
-    private final List<ItemLoader<ItemStack>> itemLoaders;
-    private final List<ItemLoader<ItemMeta>> metaLoaders;
+    private final List<Loader<ItemStack>> stackLoaders;
+    private final List<Loader<ItemMeta>> metaLoaders;
 
     public ItemStackParser() {
         super(ItemStack.class);
 
-        this.itemLoaders = new ArrayList<>();
+        this.stackLoaders = new ArrayList<>();
         this.metaLoaders = new ArrayList<>();
     }
 
@@ -33,13 +32,13 @@ public class ItemStackParser extends Parser<ItemStack> {
                 Material.valueOf(type),
                 settings.getInt("amount", 1));
 
-        for (ItemLoader<ItemStack> loader : itemLoaders) {
+        for (Loader<ItemStack> loader : stackLoaders) {
             loader.load(itemStack, settings);
         }
 
         ItemMeta itemMeta = itemStack.getItemMeta();
 
-        for (ItemLoader<ItemMeta> loader : metaLoaders) {
+        for (Loader<ItemMeta> loader : metaLoaders) {
             loader.load(itemMeta, settings);
         }
 
@@ -48,16 +47,16 @@ public class ItemStackParser extends Parser<ItemStack> {
         return itemStack;
     }
 
-    public void registerItemLoader(ItemLoader<ItemStack> loader) {
-        itemLoaders.add(loader);
+    public void registerStackLoader(Loader<ItemStack> loader) {
+        stackLoaders.add(loader);
     }
 
-    public void registerMetaLoader(ItemLoader<ItemMeta> loader) {
+    public void registerMetaLoader(Loader<ItemMeta> loader) {
         metaLoaders.add(loader);
     }
 
     public void registerDefaultLoaders() {
-        registerItemLoader(new EnchantmentsLoader());
+        registerStackLoader(new EnchantmentsLoader());
         registerMetaLoader(new DisplayNameLoader());
         registerMetaLoader(new LoreLoader());
         registerMetaLoader(new UnbreakableLoader());

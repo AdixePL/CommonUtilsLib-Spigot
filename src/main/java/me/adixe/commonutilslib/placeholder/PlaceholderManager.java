@@ -1,21 +1,19 @@
 package me.adixe.commonutilslib.placeholder;
 
-import me.adixe.commonutilslib.placeholder.provider.PlaceholderProvider;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceholderManager {
-    private final List<PlaceholderProvider<?>> placeholderProviders = new ArrayList<>();
+    private final List<Provider<?>> providers = new ArrayList<>();
 
-    public <T> void register(PlaceholderProvider<T> placeholderProvider) {
-        placeholderProviders.add(placeholderProvider);
+    public <T> void register(Provider<T> provider) {
+        providers.add(provider);
     }
 
     @SuppressWarnings("unchecked")
-    public <T> PlaceholderProvider<T> get(Class<T> type) {
-        return (PlaceholderProvider<T>) placeholderProviders.stream()
-                .filter(placeholderProvider -> placeholderProvider.getType().equals(type))
+    public <T> Provider<T> get(Class<T> type) {
+        return (Provider<T>) providers.stream()
+                .filter(provider -> provider.getType().equals(type))
                 .findFirst()
                 .orElse(null);
     }

@@ -1,10 +1,10 @@
-package me.adixe.commonutilslib.parser.provider.itemstack.loader;
+package me.adixe.commonutilslib.parser.itemstack;
 
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.simpleyaml.configuration.ConfigurationSection;
 
-public class FlagsLoader extends ItemLoader<ItemMeta> {
+public class FlagsLoader extends Loader<ItemMeta> {
     public FlagsLoader() {
         super("flags");
     }

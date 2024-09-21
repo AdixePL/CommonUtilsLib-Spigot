@@ -1,8 +1,9 @@
 package me.adixe.commonutilslib.command;
 
-import me.adixe.commonutilslib.configuration.SectionContainer;
+import me.adixe.commonutilslib.configuration.SectionHolder;
 import me.adixe.commonutilslib.util.MessageUtil;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,15 +12,15 @@ import org.simpleyaml.configuration.ConfigurationSection;
 import java.util.List;
 import java.util.Map;
 
-public abstract class BaseCommandExecutor implements org.bukkit.command.CommandExecutor, TabCompleter {
+public abstract class BaseCommandExecutor implements CommandExecutor, TabCompleter {
     private final String name;
     private final String permission;
-    private final SectionContainer settingsContainer;
+    private final SectionHolder messagesHolder;
 
-    public BaseCommandExecutor(String name, String permission, SectionContainer settingsContainer) {
+    public BaseCommandExecutor(String name, String permission, SectionHolder messagesHolder) {
         this.name = name;
         this.permission = permission;
-        this.settingsContainer = settingsContainer;
+        this.messagesHolder = messagesHolder;
     }
 
     @Override
@@ -54,7 +55,7 @@ public abstract class BaseCommandExecutor implements org.bukkit.command.CommandE
 
     protected void sendMessage(CommandSender recipient, String message,
                                Map<String, String> placeholders) {
-        ConfigurationSection settings = settingsContainer.get();
+        ConfigurationSection settings = messagesHolder.get();
 
         try {
             MessageUtil.sendMessage(recipient, settings, name + "." + message, placeholders);

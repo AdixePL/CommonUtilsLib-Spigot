@@ -1,4 +1,4 @@
-package me.adixe.commonutilslib.parser.provider.itemstack.loader;
+package me.adixe.commonutilslib.parser.itemstack;
 
 import me.adixe.commonutilslib.configuration.Configuration;
 import org.bukkit.Color;
@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.simpleyaml.configuration.ConfigurationSection;
 
-public class PotionLoader extends ItemLoader<ItemMeta> {
+public class PotionLoader extends Loader<ItemMeta> {
     public PotionLoader() {
         super("potion");
     }

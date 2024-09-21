@@ -1,10 +1,10 @@
-package me.adixe.commonutilslib.placeholder.provider;
+package me.adixe.commonutilslib.placeholder;
 
 import org.bukkit.command.CommandSender;
 
 import java.util.Map;
 
-public class CommandSenderProvider extends PlaceholderProvider<CommandSender> {
+public class CommandSenderProvider extends Provider<CommandSender> {
     public CommandSenderProvider(String defaultPrefix) {
         super(CommandSender.class, defaultPrefix);
     }

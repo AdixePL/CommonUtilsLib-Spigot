@@ -1,4 +1,4 @@
-package me.adixe.commonutilslib.parser.provider.itemstack.loader;
+package me.adixe.commonutilslib.parser.itemstack;
 
 import me.adixe.commonutilslib.configuration.Configuration;
 import org.bukkit.attribute.Attribute;
@@ -9,7 +9,7 @@ import org.simpleyaml.configuration.ConfigurationSection;
 
 import java.util.UUID;
 
-public class ModifiersLoader extends ItemLoader<ItemMeta> {
+public class ModifiersLoader extends Loader<ItemMeta> {
     public ModifiersLoader() {
         super("modifiers");
     }

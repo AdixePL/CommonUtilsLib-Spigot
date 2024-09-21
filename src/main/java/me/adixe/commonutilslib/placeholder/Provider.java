@@ -1,13 +1,13 @@
-package me.adixe.commonutilslib.placeholder.provider;
+package me.adixe.commonutilslib.placeholder;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class PlaceholderProvider<T> {
+public abstract class Provider<T> {
     private final Class<T> type;
     private final String defaultPrefix;
 
-    public PlaceholderProvider(Class<T> type, String defaultPrefix) {
+    public Provider(Class<T> type, String defaultPrefix) {
         this.type = type;
         this.defaultPrefix = defaultPrefix;
     }

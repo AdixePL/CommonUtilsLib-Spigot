@@ -1,6 +1,6 @@
 package me.adixe.commonutilslib.command;
 
-import me.adixe.commonutilslib.configuration.SectionContainer;
+import me.adixe.commonutilslib.configuration.SectionHolder;
 import org.bukkit.command.CommandSender;
 
 import java.util.*;
@@ -9,16 +9,16 @@ public class CommandService extends BaseCommandExecutor {
     private final Map<BaseCommandExecutor, List<String>> subcommands;
     private final boolean requireSubcommand;
 
-    public CommandService(String name, String permission,
-                          SectionContainer settingsContainer, boolean requireSubcommand) {
-        super(name, permission, settingsContainer);
+    public CommandService(String name, String permission, SectionHolder messagesHolder,
+                          boolean requireSubcommand) {
+        super(name, permission, messagesHolder);
 
         this.subcommands = new LinkedHashMap<>();
         this.requireSubcommand = requireSubcommand;
     }
 
-    public CommandService(String name, String permission, SectionContainer settingsContainer) {
-        this(name, permission, settingsContainer, true);
+    public CommandService(String name, String permission, SectionHolder messagesHolder) {
+        this(name, permission, messagesHolder, true);
     }
 
     public void register(BaseCommandExecutor executor, String... triggers) {

@@ -1,4 +1,4 @@
-package me.adixe.commonutilslib.parser.provider;
+package me.adixe.commonutilslib.parser;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

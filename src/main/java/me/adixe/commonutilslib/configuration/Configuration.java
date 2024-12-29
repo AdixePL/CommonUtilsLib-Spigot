@@ -132,7 +132,7 @@ public class Configuration {
 
         String name = formatName(file);
 
-        configurationFiles.put(formatName(file), yamlFile);
+        configurationFiles.put(name, yamlFile);
 
         return name;
     }

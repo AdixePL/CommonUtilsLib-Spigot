@@ -40,8 +40,9 @@ public class CommandService extends BaseCommandExecutor {
 
             for (Map.Entry<BaseCommandExecutor, List<String>> entry : subcommands.entrySet()) {
                 BaseCommandExecutor subcommand = entry.getKey();
+                List<String> triggers = entry.getValue();
 
-                if (subcommand.hasPermission(sender) && entry.getValue().contains(trigger)) {
+                if (subcommand.hasPermission(sender) && triggers.contains(trigger)) {
                     subcommand.execute(sender, args.length > 1 ?
                             Arrays.copyOfRange(args, 1, args.length) : new String[0]);
 
